@@ -1,9 +1,13 @@
-import Image from "next/image";
+"use client";
+import Profile from "@/components/profile";
+import { Container } from "@chakra-ui/react";
+import HardSkills from "@/components/hardskills";
 
 export default function Home() {
   return (
-    <div>
-      <h1>soaopsajoj</h1>
-    </div>
+    <Container as={"main"} width={"65%"}>
+      <Profile />
+      <HardSkills />
+    </Container>
   );
 }
