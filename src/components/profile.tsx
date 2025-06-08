@@ -1,4 +1,5 @@
 import { Flex, Box, Text, Button, HStack, Image } from "@chakra-ui/react"
+import Link from "next/link"
 
 export default function Profile() {
     return (
@@ -12,12 +13,16 @@ export default function Profile() {
                     I'm a passionate Full Stack Developer with a strong foundation in both front-end and back-end technologies. I specialize in building scalable web applications, designing intuitive user interfaces, and crafting clean, maintainable code. My tech stack includes JavaScript, React, Node.js, Python, and SQL, among others.
                 </Text>
                 <HStack width={"100%"} marginTop={4} justifyContent={"end"}>
-                    <Button colorPalette="teal" variant="outline">
-                        Contato
-                    </Button>
-                    <Button colorPalette="teal" variant="solid">
-                        Projetos
-                    </Button>
+                    <Link href={"/contact"}>
+                        <Button colorPalette="teal" variant="outline">
+                                Contato
+                        </Button>
+                    </Link>
+                    <Link href={"#"}>
+                        <Button colorPalette="teal" variant="solid">
+                            Projetos
+                        </Button>
+                    </Link>
                 </HStack>
             </Flex>
             <Image rounded="xl" w={240} h={240} src="https://bit.ly/dan-abramov" alt="Dan Abramov" />
