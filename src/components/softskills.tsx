@@ -1,8 +1,23 @@
-import { Flex, Text, Box, Card, VStack, Image, HStack, StackSeparator } from "@chakra-ui/react"
+import { Flex, Text, Box, HStack, For, VStack } from "@chakra-ui/react"
 import ButtonPopover from "./buttonPopover"
-import TechIcon from "./techicon"
+import { useEffect, useState } from "react"
+import { SoftSkillType } from "@/types/profile"
+import { Boxes } from "lucide-react"
 
 export default function SoftSkills() {
+    const [softsSkills, setSoftSkills] = useState<SoftSkillType[]>([]);
+
+    useEffect(() => {
+        const fetchSoftSkills = async () => {
+            const response = await fetch("/api/softskills");
+            const data: SoftSkillType[] = await response.json();
+            setSoftSkills(data);
+            console.log(data);
+        };
+        fetchSoftSkills();
+    }, [])
+
+
     return (
         <Flex as="section" direction={"column"} width={"100%"} justifyContent={"center"} padding={4} gap={4}>
             <Flex width={"100%"} direction={"column"} justifyContent={"start"} alignItems={"start"}>
@@ -23,22 +38,36 @@ export default function SoftSkills() {
                     />
                 }
             >
-                <ButtonPopover
-                    title="Versatile"
-                    description="I’m comfortable working across the full stack — from crafting responsive UIs to designing scalable backend systems."
-                />
-                <ButtonPopover
-                    title="Detail-oriented"
-                    description="I care deeply about the little things, whether it's writing clean code, optimizing performance, or refining the user experience. I believe small details make a big difference"
-                />
-                <ButtonPopover
-                    title="Problem-solver"
-                    description="I enjoy tackling complex problems and turning them into practical, efficient solutions. Debugging, optimizing, and architecting systems are challenges I embrace with curiosity and focus."
-                />
-                <ButtonPopover
-                    title="Collaborative"
-                    description="I thrive in team environments and enjoy working closely with designers, developers, and stakeholders. Clear communication and collaboration are key to building great products, and I always strive to support and learn from those around me"
-                />
+                {softsSkills.length > 0 ? (
+                    <HStack
+                        justifyContent="space-between"
+                        gap={8}
+                        wrap={"wrap"}
+                        width={"100%"}
+                        separator={
+                            <Box
+                                width="12px"
+                                height="12px"
+                                borderRadius="full"
+                                bg="gray.300"
+                                display="inline-block"
+                            />
+                        }
+                    >
+                        {softsSkills.map((skill) => (
+                            <ButtonPopover
+                                key={skill.name}
+                                title={skill.name}
+                                description={skill.description}
+                            />
+                        ))}
+                    </HStack>
+                ) : (
+                    <VStack width="100%" justifyContent="center" textAlign="center" fontWeight="medium">
+                        <Boxes />
+                        Nenhuma skill cadastrada
+                    </VStack>
+                )}
             </HStack>
         </Flex>
     )

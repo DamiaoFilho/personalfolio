@@ -1,31 +1,44 @@
+import { ProfileType } from "@/types/profile";
 import { Flex, Box, Text, Button, HStack, Image } from "@chakra-ui/react"
 import Link from "next/link"
+import { useEffect, useState } from "react"
 
 export default function Profile() {
+    const [profile, setProfile] = useState<ProfileType>();
+
+    useEffect(() => {
+        const fetchProfile = async () => {
+            const response = await fetch("/api/profile");
+            const data: ProfileType = await response.json();
+            setProfile(data);
+        };
+        fetchProfile();
+    }, []);
+
     return (
-        <Flex as="section" width={"100%"} justifyContent={"center"} padding={4} gap={8}>
+        <Flex as="section" width={"100%"} alignContent={"center"} justifyContent={"center"} padding={4} gap={8}>
             <Flex direction={"column"} justifyContent={"center"}>
                 <Box>
-                    <Text as="h1" fontSize={42} fontWeight={"bold"}>Jhon Doe</Text>
-                    <Text as="h2" color={"#A1A1A1"} fontSize={24}>Full-Stack Developer</Text>
+                    <Text as="h1" fontSize={42} fontWeight={"bold"}>{profile?.name}</Text>
+                    <Text as="h2" color={"#A1A1A1"} fontSize={24}>{profile?.role}</Text>
                 </Box >
-                <Text marginTop={4} fontSize={14}>
-                    I'm a passionate Full Stack Developer with a strong foundation in both front-end and back-end technologies. I specialize in building scalable web applications, designing intuitive user interfaces, and crafting clean, maintainable code. My tech stack includes JavaScript, React, Node.js, Python, and SQL, among others.
+                <Text textAlign={"justify"} marginTop={4} fontSize={14}>
+                    {profile?.description}
                 </Text>
                 <HStack width={"100%"} marginTop={4} justifyContent={"end"}>
                     <Link href={"/contact"}>
                         <Button colorPalette="teal" variant="outline">
-                                Contato
+                            Contact
                         </Button>
                     </Link>
                     <Link href={"#"}>
                         <Button colorPalette="teal" variant="solid">
-                            Projetos
+                            Projects
                         </Button>
                     </Link>
                 </HStack>
             </Flex>
-            <Image rounded="xl" w={240} h={240} src="https://bit.ly/dan-abramov" alt="Dan Abramov" />
+            <Image rounded="xl" w={240} h={240} src={profile?.avatar} alt="Dan Abramov" />
         </Flex>
     )
 }
