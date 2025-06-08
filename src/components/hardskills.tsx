@@ -1,4 +1,5 @@
-import { Flex, Text, Box, Card } from "@chakra-ui/react"
+import { Flex, Text, Box, Card, VStack, Image, HStack } from "@chakra-ui/react"
+import TechIcon from "./techicon"
 
 export default function HardSkills() {
     return (
@@ -7,18 +8,44 @@ export default function HardSkills() {
                 <Text fontSize={24}>Hard</Text>
                 <Text fontSize={24} fontWeight={"bold"}>Skills</Text>
             </Flex>
-            <Flex width={"100%"}>
+            <HStack justifyContent={"space-between"} gap={8} width={"100%"}>
                 <Card.Root width="200px">
                     <Card.Body gap="2">
                         <Card.Title>Frontend</Card.Title>
-                        <Card.Description>
-                            This is the card body. Lorem ipsum dolor sit amet, consectetur
-                            adipiscing elit. Curabitur nec odio vel dui euismod fermentum.
-                            Curabitur nec odio vel dui euismod fermentum.
-                        </Card.Description>
+                        <Box as="ul">
+                            <li><TechIcon src="/logos/angular.png" name="Angular"/></li>
+                            <li><TechIcon src="logos/vite-js-logo.png" name="Vite.js"/></li>
+                        </Box>
                     </Card.Body>
                 </Card.Root>
-            </Flex>
+                <Card.Root width="200px">
+                    <Card.Body gap="2">
+                        <Card.Title>Backend</Card.Title>
+                        <Box as="ul">
+                            <li><TechIcon src="/logos/angular.png" name="Angular"/></li>
+                            <li><TechIcon src="logos/vite-js-logo.png" name="Vite.js"/></li>
+                        </Box>
+                    </Card.Body>
+                </Card.Root>
+                <Card.Root width="200px">
+                    <Card.Body gap="2">
+                        <Card.Title>DevOps</Card.Title>
+                        <Box as="ul">
+                            <li><TechIcon src="/logos/angular.png" name="Angular"/></li>
+                            <li><TechIcon src="logos/vite-js-logo.png" name="Vite.js"/></li>
+                        </Box>
+                    </Card.Body>
+                </Card.Root>
+                <Card.Root width="200px">
+                    <Card.Body gap="2">
+                        <Card.Title>Languages</Card.Title>
+                        <Box as="ul">
+                            <li><TechIcon src="/logos/angular.png" name="Angular"/></li>
+                            <li><TechIcon src="logos/vite-js-logo.png" name="Vite.js"/></li>
+                        </Box>
+                    </Card.Body>
+                </Card.Root>
+            </HStack>
         </Flex>
     )
 }
