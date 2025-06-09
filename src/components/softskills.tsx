@@ -12,7 +12,6 @@ export default function SoftSkills() {
             const response = await fetch("/api/softskills");
             const data: SoftSkillType[] = await response.json();
             setSoftSkills(data);
-            console.log(data);
         };
         fetchSoftSkills();
     }, [])

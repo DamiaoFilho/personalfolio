@@ -35,7 +35,7 @@ export default function ContactIcons() {
                 {loading && <Spinner size="md" />}
                 {contactData && (
                     <>
-                    <Flex gap={8}>
+                    <Flex direction={"column"} gap={8}>
                         <Flex gap={4}>
                             <Mail size={24} />
                             <Text>{contactData.email}</Text>
