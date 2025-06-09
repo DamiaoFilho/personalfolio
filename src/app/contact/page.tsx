@@ -1,3 +1,4 @@
+"use client";
 import { Container, Flex, Text, Card, Avatar, Button, Stack, Field, Input, Textarea } from "@chakra-ui/react";
 import ContactForm from "@/components/contactForm";
 import ContactIcons from "@/components/ContactIcons";

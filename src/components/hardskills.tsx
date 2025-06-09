@@ -27,7 +27,7 @@ export default function HardSkills() {
                 <For each={hardSkills} fallback={
                     <VStack width="100%" justifyContent={"center"} textAlign="center" fontWeight="medium">
                         <Boxes />
-                        Nenhuma skills cadastrada
+                        No hard skills found
                     </VStack>
                 }>
                     {(category, index) => (

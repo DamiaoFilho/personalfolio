@@ -65,7 +65,7 @@ export default function SoftSkills() {
                 ) : (
                     <VStack width="100%" justifyContent="center" textAlign="center" fontWeight="medium">
                         <Boxes />
-                        Nenhuma skill cadastrada
+                        No soft skills found
                     </VStack>
                 )}
             </HStack>

@@ -19,3 +19,14 @@ export interface SoftSkillType {
    name: string;
    description: string;
 }
+
+export interface ContactInfo {
+  email: string;
+  phone: string;
+  socialLinks: {
+    github: string;
+    linkedin: string;
+    gitlab: string;
+    instagram: string;
+  };
+};
