@@ -30,3 +30,12 @@ export interface ContactInfo {
     instagram: string;
   };
 };
+
+export interface ProjectType {
+  id: number;
+  name: string;
+  description: string;
+  src: string;
+  repository: string;
+  technologies: HardSkillType[]
+}
