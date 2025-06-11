@@ -1,4 +1,4 @@
-import { Flex, Text, Box, Card, VStack, Image, HStack, For } from "@chakra-ui/react"
+import { Flex, Text, Box, Card, VStack, HStack, For } from "@chakra-ui/react"
 import TechIcon from "./techicon"
 import { HardSkillCategoryType } from "@/types/profile";
 import { useEffect, useState } from "react";
