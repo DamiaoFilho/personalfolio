@@ -1,5 +1,5 @@
 "use client"
-import { Card, Container, Flex, Text, Image, Box, HStack, Badge, Button, For, Center, VStack } from "@chakra-ui/react";
+import { Card, Container, Flex, Text, Image, Box, Button, For, VStack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { ProjectType } from "@/types/profile"
 import { useRouter } from "next/navigation";
@@ -7,14 +7,13 @@ import Link from "next/link";
 
 export default function ProjectsPage() {
   const [projectType, setProjectType] = useState<ProjectType[]>([])
-  const router = useRouter();
 
   useEffect(() => {
     const fetchProjects = async () => {
       const response = await fetch("/api/projects");
       const data: ProjectType[] = await response.json();
       setProjectType(data);
-    };
+    }
     fetchProjects();
   },[])
 
@@ -60,13 +59,10 @@ export default function ProjectsPage() {
                         <Box padding={` ${index %2 === 0 ? "0 0 0 24px": "0 24px 0 0"}`} maxW="50%" height="100%" minW="30%" display={"flex"} flexDirection="column" justifyContent="space-between">
                           <Card.Body padding={0}>
                             <Card.Title mb="2" fontSize={26}>{project.name}</Card.Title>
-                            <Card.Description>
-                              <Text
-                                truncate
-                                lineClamp={4}
-                              >
+                            <Card.Description 
+                              truncate
+                              lineClamp={4}>
                                 {project.description}
-                              </Text>
                             </Card.Description>
                           </Card.Body>
                           <Card.Footer padding={0} justifyContent={"right"}>
