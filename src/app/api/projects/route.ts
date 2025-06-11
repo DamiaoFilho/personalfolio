@@ -1,6 +1,4 @@
 import { NextResponse } from "next/server";
-import { id } from "zod/v4/locales";
-
 
 export async function GET() {
     const data = [
